@@ -32,28 +32,28 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4">
-      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-green-200 px-4">
+      <div className="card">
         {user ? (
           <>
             <p className="text-center mb-4">Welcome, {user.email}</p>
             <button
               onClick={handleLogout}
-              className="w-full px-4 py-2 bg-red-500 rounded hover:bg-red-600"
+              className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-2 px-4 rounded transition duration-300"
             >
               Log out
             </button>
           </>
         ) : (
           <>
-            <h2 className="text-2xl font-semibold mb-6 text-center">
+            <h2 className="text-2xl font-bold mb-6 text-center text-green-300">
               {isRegistering ? "Register" : "Log In"}
             </h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=""
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -61,20 +61,17 @@ function Login() {
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=""
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button
-                type="submit"
-                className="w-full bg-blue-600 py-2 rounded hover:bg-blue-700 transition duration-300"
-              >
+              <button type="submit">
                 {isRegistering ? "Sign Up" : "Log In"}
               </button>
             </form>
             <p
-              className="mt-4 text-sm text-center text-gray-400 cursor-pointer hover:underline"
+              className="mt-4 text-sm text-center text-green-400 cursor-pointer hover:underline"
               onClick={() => setIsRegistering(!isRegistering)}
             >
               {isRegistering
