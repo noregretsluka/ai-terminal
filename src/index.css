@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-900 text-green-200 font-terminal text-lg;
+  @apply bg-gray-900 text-green-200 font-body text-lg;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display text-green-300;
 }
 
 input {

@@ -7,9 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        terminal: ['"VT323"', 'monospace'],
+        display: ['"VT323"', 'monospace'],
+        body: ['"Inter"', 'sans-serif'],
       },
     },
   },
   plugins: [],
-}
+};
