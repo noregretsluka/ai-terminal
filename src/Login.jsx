@@ -30,28 +30,28 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white px-4">
-      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black text-white px-4">
+      <div className="bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-sm">
         {user ? (
           <>
-            <p className="text-center mb-4">Welcome, {user.email}</p>
+            <p className="text-center mb-4 text-lg">Welcome, {user.email}</p>
             <button
               onClick={handleLogout}
-              className="w-full px-4 py-2 bg-red-500 rounded hover:bg-red-600"
+              className="w-full py-2 bg-red-600 rounded-md hover:bg-red-700 transition duration-300"
             >
               Log out
             </button>
           </>
         ) : (
           <>
-            <h2 className="text-2xl font-semibold mb-6 text-center">
+            <h2 className="text-3xl font-bold mb-6 text-center">
               {isRegistering ? "Register" : "Log In"}
             </h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -59,14 +59,14 @@ function Login() {
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <button
                 type="submit"
-                className="w-full bg-blue-600 py-2 rounded hover:bg-blue-700 transition duration-300"
+                className="w-full py-3 bg-blue-600 rounded-md hover:bg-blue-700 transition duration-300"
               >
                 {isRegistering ? "Sign Up" : "Log In"}
               </button>
