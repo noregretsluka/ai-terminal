@@ -36,7 +36,7 @@ function Login() {
       <div className="card">
         {user ? (
           <>
-            <p className="text-center mb-4">Welcome, {user.email}</p>
+            <p className="text-center mb-4 font-vt">Welcome, {user.email}</p>
             <button
               onClick={handleLogout}
               className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-2 px-4 rounded transition duration-300"
@@ -46,14 +46,14 @@ function Login() {
           </>
         ) : (
           <>
-            <h2 className="text-2xl font-bold mb-6 text-center text-green-300">
+            <h2 className="text-3xl font-mono mb-6 text-center text-green-300">
               {isRegistering ? "Register" : "Log In"}
             </h2>
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
               <input
                 type="email"
                 placeholder="Email"
-                className=""
+                className="bg-gray-800 border border-green-500 text-green-100 placeholder-green-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -61,17 +61,20 @@ function Login() {
               <input
                 type="password"
                 placeholder="Password"
-                className=""
+                className="bg-gray-800 border border-green-500 text-green-100 placeholder-green-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button type="submit">
+              <button
+                type="submit"
+                className="bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded transition duration-300"
+              >
                 {isRegistering ? "Sign Up" : "Log In"}
               </button>
             </form>
             <p
-              className="mt-4 text-sm text-center text-green-400 cursor-pointer hover:underline"
+              className="mt-4 text-sm text-center text-green-400 cursor-pointer hover:underline font-vt"
               onClick={() => setIsRegistering(!isRegistering)}
             >
               {isRegistering
