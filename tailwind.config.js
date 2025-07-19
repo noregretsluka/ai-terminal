@@ -7,10 +7,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"VT323"', 'monospace'],
-        body: ['"Inter"', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
+        inter: ['Inter', 'sans-serif'],
+        vt: ['VT323', 'monospace'],
       },
     },
   },
   plugins: [],
-};
+}

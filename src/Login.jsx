@@ -1,4 +1,3 @@
-// src/Login.jsx
 import { useState } from "react";
 import { auth } from "./firebase";
 import {
@@ -32,13 +31,13 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-green-400 px-4 font-vt">
-      <div className="card rounded-none border border-green-500 w-full max-w-md shadow-lg">
-        {/* Windows XP Terminal-style Header */}
-        <div className="flex justify-between items-center bg-green-900 text-black font-bold px-2 py-1 text-sm">
-          <span className="text-green-100">C:\WINDOWS\System32\Log_In</span>
-          <div className="flex space-x-1">
-            <div className="w-3 h-3 bg-yellow-400 rounded-sm"></div>
-            <div className="w-3 h-3 bg-red-500 rounded-sm"></div>
+      <div className="border border-green-500 w-full max-w-md rounded-none shadow-lg">
+        {/* XP-style title bar */}
+        <div className="flex items-center justify-between bg-black text-green-400 border-b border-green-500 px-3 py-1 text-sm font-mono">
+          <span className="tracking-wide">C:\WINDOWS\System32\Log_In</span>
+          <div className="flex items-center gap-1">
+            <div className="w-4 h-4 border border-green-500 flex items-center justify-center text-xs cursor-pointer">_</div>
+            <div className="w-4 h-4 border border-green-500 flex items-center justify-center text-xs cursor-pointer">X</div>
           </div>
         </div>
 
@@ -48,25 +47,21 @@ function Login() {
               <p className="text-center mb-4">Welcome, {user.email}</p>
               <button
                 onClick={handleLogout}
-                className="hover:bg-green-800 transition duration-300"
+                className="w-full border border-green-500 py-2 hover:bg-green-800 transition"
               >
                 Log out
               </button>
             </>
           ) : (
             <>
-              <h2 className="text-xl font-mono mb-4 blinking-cursor text-green-300">
-                {isRegistering ? "Register" : "Log In"}
-              </h2>
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col space-y-4"
-              >
+              <h2 className="text-2xl text-center mb-6 font-mono">Log In</h2>
+              <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                 <input
                   type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="bg-black border border-green-500 text-green-200 px-3 py-2 focus:outline-none font-mono"
                   required
                 />
                 <input
@@ -74,19 +69,23 @@ function Login() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="bg-black border border-green-500 text-green-200 px-3 py-2 focus:outline-none font-mono"
                   required
                 />
-                <button type="submit" className="hover:bg-green-700">
+                <button
+                  type="submit"
+                  className="border border-green-500 py-2 hover:bg-green-700 font-mono"
+                >
                   {isRegistering ? "Sign Up" : "Log In"}
                 </button>
               </form>
               <p
-                className="mt-4 text-center text-sm text-green-500 cursor-pointer hover:underline"
+                className="mt-4 text-center text-sm text-green-500 cursor-pointer hover:underline font-mono"
                 onClick={() => setIsRegistering(!isRegistering)}
               >
                 {isRegistering
                   ? "Already have an account? Log in"
-                  : "Don't have an account? Sign up"}
+                  : "Don’t have an account? Sign up"}
               </p>
             </>
           )}
