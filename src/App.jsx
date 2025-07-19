@@ -1,7 +1,12 @@
-import Terminal from "./components/Terminal";
+// src/App.jsx
+import Login from "./Login";
 
 function App() {
-  return <Terminal />;
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
 
 export default App;
