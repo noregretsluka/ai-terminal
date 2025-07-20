@@ -12,11 +12,10 @@ const firebaseConfig = {
   measurementId: "G-V0YTC3LHHF"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-import { getAuth } from "firebase/auth";
-
-const auth = getAuth();
-console.log("✅ Firebase initialized:", auth.app.name); // Should log '[DEFAULT]'
+// Logging (for debugging only)
+console.log("✅ Firebase initialized:", app.name); // Should log '[DEFAULT]'
 console.log("Current user:", auth.currentUser);
