@@ -1,6 +1,6 @@
 // src/Login.jsx
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 import {
   createUserWithEmailAndPassword,
@@ -13,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const [isRegistering, setIsRegistering] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ function Login() {
         ? await createUserWithEmailAndPassword(auth, email, password)
         : await signInWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
+      navigate("/menu"); // Redirect to main menu
     } catch (error) {
       alert(error.message);
     }
@@ -45,7 +47,6 @@ function Login() {
 
         {/* Terminal output and form */}
         <div className="p-6">
-          {/* Fake printed terminal text */}
           <div className="w-full flex justify-center">
             <h1 className="text-green-400 font-mono text-lg text-center blinking-cursor">
               Welcome to AI Terminal
