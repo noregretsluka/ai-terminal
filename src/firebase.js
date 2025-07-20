@@ -3,15 +3,20 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyDDdNiFBARM27r6nDwW0OBxooBEuQRCkS4",
+  authDomain: "ai-terminal-66064.firebaseapp.com",
+  projectId: "ai-terminal-66064",
+  storageBucket: "ai-terminal-66064.firebasestorage.app",
+  messagingSenderId: "829270660122",
+  appId: "1:829270660122:web:e54224949608f3cb706da3",
+  measurementId: "G-V0YTC3LHHF"
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
-export { auth };
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+console.log("✅ Firebase initialized:", auth.app.name); // Should log '[DEFAULT]'
+console.log("Current user:", auth.currentUser);
