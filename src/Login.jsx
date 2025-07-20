@@ -33,7 +33,7 @@ function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-green-400 px-4 font-vt">
       <div className="border border-green-500 w-full max-w-md">
-        {/* Header bar mimicking Windows XP terminal */}
+        {/* Windows XP terminal-style title bar */}
         <div className="flex justify-between items-center bg-black text-green-400 border-b border-green-500 px-2 py-1 text-sm font-bold font-mono">
           <span>C:\WINDOWS\System32\Log_In</span>
           <div className="flex space-x-1">
@@ -42,22 +42,28 @@ function Login() {
           </div>
         </div>
 
-        {/* Main content area */}
+        {/* Terminal output and form */}
         <div className="p-6">
-          <div className="mt-2 text-green-400 font-vt blinking-cursor">C:\></div>
+          {/* Fake printed terminal text */}
+          <div className="mb-4 text-green-400 font-vt">
+            <div className="blinking-cursor">
+              C:\&gt; Welcome to AI Terminal
+            </div>
+          </div>
+
           {user ? (
             <>
-              <p className="text-center my-4">Welcome, {user.email}</p>
+              <p className="text-center mb-4 font-sans">Welcome, {user.email}</p>
               <button
                 onClick={handleLogout}
-                className="hover:bg-green-800 transition duration-300 w-full border border-green-400 py-2"
+                className="hover:bg-green-800 transition duration-300 w-full border border-green-400 py-2 font-sans"
               >
                 Log out
               </button>
             </>
           ) : (
             <>
-              <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-4">
+              <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-4 font-sans">
                 <input
                   type="email"
                   placeholder="Email"
@@ -82,7 +88,7 @@ function Login() {
                 </button>
               </form>
               <p
-                className="mt-4 text-center text-sm text-green-500 cursor-pointer hover:underline"
+                className="mt-4 text-center text-sm text-green-500 cursor-pointer hover:underline font-sans"
                 onClick={() => setIsRegistering(!isRegistering)}
               >
                 {isRegistering

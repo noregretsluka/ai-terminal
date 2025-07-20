@@ -18,14 +18,15 @@ button {
 
 /* Blinking cursor effect */
 .blinking-cursor::after {
-  content: "_";
-  display: inline-block;
-  animation: blink 1s step-start infinite;
-  margin-left: 4px;
+  content: '_';
+  animation: blink 1s steps(1) infinite;
 }
 
 @keyframes blink {
-  50% {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
     opacity: 0;
   }
 }
