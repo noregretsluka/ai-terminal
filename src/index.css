@@ -12,7 +12,7 @@ input {
 }
 
 button {
-  @apply bg-black border border-green-500 text-green-300 font-vt px-4 py-2 w-full hover:bg-green-800 transition duration-300;
+  @apply bg-black border border-green-500 text-green-300 font-inter px-4 py-2 w-full hover:bg-green-800 transition duration-300;
 }
 
 .card {
