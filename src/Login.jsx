@@ -43,10 +43,11 @@ function Login() {
         </div>
 
         {/* Main content area */}
-        <div className="mt-6 text-green-400 font-vt blinking-cursor">C:\></div>
+        <div className="p-6">
+          <div className="mt-2 text-green-400 font-vt blinking-cursor">C:\></div>
           {user ? (
             <>
-              <p className="text-center mb-4">Welcome, {user.email}</p>
+              <p className="text-center my-4">Welcome, {user.email}</p>
               <button
                 onClick={handleLogout}
                 className="hover:bg-green-800 transition duration-300 w-full border border-green-400 py-2"
@@ -56,8 +57,7 @@ function Login() {
             </>
           ) : (
             <>
-              {/* Removed the <h2>Log In</h2> here */}
-              <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+              <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-4">
                 <input
                   type="email"
                   placeholder="Email"
