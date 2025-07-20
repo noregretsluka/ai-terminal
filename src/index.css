@@ -7,9 +7,12 @@ body {
   @apply bg-black text-green-400 font-vt text-lg;
 }
 
-input,
+input {
+  @apply bg-black border border-green-500 text-green-200 placeholder-green-500 font-inter px-4 py-2 w-full;
+}
+
 button {
-  @apply bg-black border border-green-500 text-green-300 placeholder-green-500 font-vt px-4 py-2 w-full;
+  @apply bg-black border border-green-500 text-green-300 font-vt px-4 py-2 w-full hover:bg-green-800 transition duration-300;
 }
 
 .card {
