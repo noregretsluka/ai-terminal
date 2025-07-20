@@ -13,10 +13,10 @@ function Logs() {
 
         <div className="mt-6 text-center">
           <Link
-            to="/"
+            to="/menu"
             className="inline-block bg-black border border-green-500 text-green-300 px-4 py-2 hover:bg-green-800 transition duration-300 font-sans"
           >
-            ← Back to Login
+            ← Back
           </Link>
         </div>
       </div>
