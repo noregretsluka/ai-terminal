@@ -46,10 +46,11 @@ function Login() {
         <div className="p-6">
           {/* Fake printed terminal text */}
           <div className="w-full flex justify-center">
-			<h1 className="text-green-400 font-mono text-3xl text-center blinking-cursor">
+			<h1 className="text-green-400 font-mono text-2xl text-center blinking-cursor">
 				Welcome to AI Terminal
 			</h1>
-          </div>
+		  </div>
+
 
           {user ? (
             <>
