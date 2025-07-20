@@ -1,5 +1,6 @@
 // src/Login.jsx
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { auth } from "./firebase";
 import {
   createUserWithEmailAndPassword,
@@ -46,17 +47,37 @@ function Login() {
         <div className="p-6">
           {/* Fake printed terminal text */}
           <div className="w-full flex justify-center">
-			<h1 className="text-green-400 font-mono text-xl text-center blinking-cursor">
-				Welcome to AI Terminal
-			</h1>
-		  </div>
+            <h1 className="text-green-400 font-mono text-lg text-center blinking-cursor">
+              Welcome to AI Terminal
+            </h1>
+          </div>
 
           {user ? (
             <>
               <p className="text-center mb-4 font-sans">Welcome, {user.email}</p>
+
+              {/* Navigation buttons */}
+              <div className="mt-6 flex flex-col space-y-2">
+                <Link to="/assistant">
+                  <button className="border border-green-500 text-green-300 hover:bg-green-800 transition px-4 py-2 w-full font-sans">
+                    Launch AI Assistant
+                  </button>
+                </Link>
+                <Link to="/logs">
+                  <button className="border border-green-500 text-green-300 hover:bg-green-800 transition px-4 py-2 w-full font-sans">
+                    View Logs
+                  </button>
+                </Link>
+                <Link to="/settings">
+                  <button className="border border-green-500 text-green-300 hover:bg-green-800 transition px-4 py-2 w-full font-sans">
+                    System Settings
+                  </button>
+                </Link>
+              </div>
+
               <button
                 onClick={handleLogout}
-                className="hover:bg-green-800 transition duration-300 w-full border border-green-400 py-2 font-sans"
+                className="mt-4 hover:bg-green-800 transition duration-300 w-full border border-green-400 py-2 font-sans"
               >
                 Log out
               </button>
@@ -82,7 +103,7 @@ function Login() {
                 />
                 <button
                   type="submit"
-                  className="bg-black border border-green-500 text-green-300 py-2 hover:bg-green-800 transition duration-300"
+                  className="bg-black border border-green-500 text-green-300 py-2 hover:bg-green-800 transition duration-300 font-sans"
                 >
                   {isRegistering ? "Sign Up" : "Log In"}
                 </button>
