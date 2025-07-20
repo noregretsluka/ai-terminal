@@ -1,3 +1,4 @@
+// src/Login.jsx
 import { useState } from "react";
 import { auth } from "./firebase";
 import {
@@ -31,56 +32,57 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-green-400 px-4 font-vt">
-      <div className="border border-green-500 w-full max-w-md rounded-none shadow-lg">
-        {/* XP-style title bar */}
-        <div className="flex items-center justify-between bg-black text-green-400 border-b border-green-500 px-3 py-1 text-sm font-mono">
-          <span className="tracking-wide">C:\WINDOWS\System32\Log_In</span>
-          <div className="flex items-center gap-1">
-            <div className="w-4 h-4 border border-green-500 flex items-center justify-center text-xs cursor-pointer">_</div>
-            <div className="w-4 h-4 border border-green-500 flex items-center justify-center text-xs cursor-pointer">X</div>
+      <div className="border border-green-500 w-full max-w-md">
+        {/* Header bar mimicking Windows XP terminal */}
+        <div className="flex justify-between items-center bg-black text-green-400 border-b border-green-500 px-2 py-1 text-sm font-bold font-mono">
+          <span>C:\WINDOWS\System32\Log_In</span>
+          <div className="flex space-x-1">
+            <div className="border border-green-500 w-4 h-4 text-center leading-3 cursor-pointer">_</div>
+            <div className="border border-green-500 w-4 h-4 text-center leading-3 cursor-pointer">X</div>
           </div>
         </div>
 
-        <div className="p-6">
+        {/* Main content area */}
+        <div className="mt-6 text-green-400 font-vt blinking-cursor">C:\></div>
           {user ? (
             <>
               <p className="text-center mb-4">Welcome, {user.email}</p>
               <button
                 onClick={handleLogout}
-                className="w-full border border-green-500 py-2 hover:bg-green-800 transition"
+                className="hover:bg-green-800 transition duration-300 w-full border border-green-400 py-2"
               >
                 Log out
               </button>
             </>
           ) : (
             <>
-              <h2 className="text-2xl text-center mb-6 font-mono">Log In</h2>
+              {/* Removed the <h2>Log In</h2> here */}
               <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                 <input
                   type="email"
                   placeholder="Email"
+                  className="bg-black border border-green-500 text-green-200 px-4 py-2 focus:outline-none"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-black border border-green-500 text-green-200 px-3 py-2 focus:outline-none font-mono"
                   required
                 />
                 <input
                   type="password"
                   placeholder="Password"
+                  className="bg-black border border-green-500 text-green-200 px-4 py-2 focus:outline-none"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-black border border-green-500 text-green-200 px-3 py-2 focus:outline-none font-mono"
                   required
                 />
                 <button
                   type="submit"
-                  className="border border-green-500 py-2 hover:bg-green-700 font-mono"
+                  className="bg-black border border-green-500 text-green-300 py-2 hover:bg-green-800 transition duration-300"
                 >
                   {isRegistering ? "Sign Up" : "Log In"}
                 </button>
               </form>
               <p
-                className="mt-4 text-center text-sm text-green-500 cursor-pointer hover:underline font-mono"
+                className="mt-4 text-center text-sm text-green-500 cursor-pointer hover:underline"
                 onClick={() => setIsRegistering(!isRegistering)}
               >
                 {isRegistering

@@ -7,7 +7,8 @@ body {
   @apply bg-black text-green-400 font-vt text-lg;
 }
 
-input, button {
+input,
+button {
   @apply bg-black border border-green-500 text-green-300 placeholder-green-500 font-vt px-4 py-2 w-full;
 }
 
@@ -15,13 +16,16 @@ input, button {
   @apply border border-green-500 bg-black text-green-400 w-full max-w-md p-6 shadow-lg;
 }
 
-/* Optional: Blinking cursor effect */
+/* Blinking cursor effect */
 .blinking-cursor::after {
-  content: '_';
-  animation: blink 1s steps(1) infinite;
+  content: "_";
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+  margin-left: 4px;
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
