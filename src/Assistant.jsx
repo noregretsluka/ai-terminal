@@ -9,42 +9,35 @@ function Assistant() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const updatedMessages = [...messages, { role: "user", content: input }];
-    setMessages(updatedMessages);
-    setInput("");
+    setLogs([...logs, `> ${input}`]);
     setLoading(true);
 
     try {
-      const response = await fetch("https://bumper-freeze-apache-oc.trycloudflare.com/v1/chat/completions", {
+      const response = await fetch("https://bumper-freeze-apache-oc.trycloudflare.com/api/v1/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "gpt-4", // Replace with "NemoMix-Unleashed" if needed
-          messages: updatedMessages
+          prompt: input,
+          max_context_length: 2048,
+          max_length: 200,
+          temperature: 0.7,
+          top_p: 0.9,
+          top_k: 40,
+          stop_sequence: ["\n", "User:"]
         })
       });
 
       const data = await response.json();
-      const reply = data.choices[0]?.message?.content;
+      const reply = data.results?.[0]?.text || "❌ No response from model.";
 
-      setMessages([...updatedMessages, { role: "assistant", content: reply }]);
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        `> ${input}`,
-        reply || "❌ No reply received from Arcadia AI."
-      ]);
+      setLogs((prev) => [...prev, reply.trim()]);
     } catch (err) {
       console.error("API error:", err);
-      setMessages([...updatedMessages, { role: "assistant", content: "❌ Failed to reach Arcadia AI." }]);
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        `> ${input}`,
-        "❌ Failed to reach Arcadia AI."
-      ]);
+      setLogs((prev) => [...prev, "❌ Failed to reach Arcadia AI."]);
     } finally {
+      setInput("");
       setLoading(false);
     }
   };
